@@ -61,17 +61,26 @@ export default class Cl_vInscritoPlain implements I_vInscrito {
         if (this.mensajeDiv) this.mensajeDiv.textContent = texto;
     }
 
-    agregarAFila(nombre: string, apellido: string, tipoCurso: number, pago: number): void {
+    agregarAFila(
+        nombre: string, apellido: string, cedula: string, sexo: string,
+        fechaNac: string, edad: number, tipoCurso: number,
+        inversionBase: number, descuentoMenorEdad: number,
+        descuento3raEdad: number, inversion: number
+    ): void {
         const fila = document.createElement("tr");
-        let cursoTexto = "";
-        if (tipoCurso === 1) cursoTexto = "Inglés";
-        else if (tipoCurso === 2) cursoTexto = "Computación";
-        else cursoTexto = "I.A.";
+       
         fila.innerHTML = `
             <td>${nombre}</td>
             <td>${apellido}</td>
-            <td>${cursoTexto}</td>
-            <td>$${pago.toFixed(2)}</td>
+            <td>${cedula}</td>
+            <td>${sexo}</td>
+            <td>${fechaNac}</td>
+            <td>${edad}</td>
+            <td>${tipoCurso}</td>
+            <td>${inversionBase}</td>
+            <td>${descuentoMenorEdad}</td>
+            <td>${descuento3raEdad}</td>
+            <td>${inversion}</td>
         `;
         this.tablaBody.appendChild(fila);
     }

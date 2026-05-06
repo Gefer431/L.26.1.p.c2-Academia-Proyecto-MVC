@@ -1,37 +1,29 @@
 import Cl_mInscrito from "./Cl_mInscrito.js";
 
 export default class Cl_mAcademia {
-    private recaudadoTotal: number;
-    private cntIngles: number;
-    private cntComputacion: number;
-    private cntIA: number;
-    private cntMenorEdad: number;
-    private cntAdulto: number;
-    private cntTerceraEdad: number;
-    private inscritosTotal: number;
-    private acEdades: number;
-    private cntMayoresEdad: number;   // ✅ contador mayores de edad
-
-    constructor() {
-        this.recaudadoTotal = 0;
-        this.cntIngles = 0;
-        this.cntComputacion = 0;
-        this.cntIA = 0;
-        this.cntMenorEdad = 0;
-        this.cntAdulto = 0;
-        this.cntTerceraEdad = 0;
-        this.inscritosTotal = 0;
-        this.acEdades = 0;
-        this.cntMayoresEdad = 0;
-    }
+    private recaudadoTotal: number = 0;
+    private cntIngles: number = 0;
+    private cntComputacion: number = 0;
+    private cntIA: number = 0;
+    private cntMenorEdad: number = 0;
+    private cntAdulto: number = 0;
+    private cntTerceraEdad: number = 0;
+    private inscritosTotal: number = 0;
+    private acEdades: number = 0;
+    private cntMayoresEdad: number = 0;
+    private acDescuentoMenor: number = 0;
+    private acDescuento3ra: number = 0;
 
     procesarInscrito(ins: Cl_mInscrito): void {
-        this.recaudadoTotal += ins.pagoFinal();
-        this.acEdades += ins.calcularEdad();
+        const pago = ins.inversion();
+        this.recaudadoTotal += pago;
         this.inscritosTotal++;
-
-        const edad = ins.calcularEdad();
+        const edad = ins.edad();
+        this.acEdades += edad;
         if (edad >= 18) this.cntMayoresEdad++;
+
+        this.acDescuentoMenor += ins.descuentoMenorEdad();
+        this.acDescuento3ra += ins.descuento3raEdad();
 
         switch (ins.tipoCurso) {
             case 1: this.cntIngles++; break;
@@ -53,7 +45,9 @@ export default class Cl_mAcademia {
     cantAdulto(): number { return this.cntAdulto; }
     cantTerceraEdad(): number { return this.cntTerceraEdad; }
     totalInscritos(): number { return this.inscritosTotal; }
-    cantMayoresEdad(): number { return this.cntMayoresEdad; }   
+    cantMayoresEdad(): number { return this.cntMayoresEdad; }
+    totalDescuentoMenor(): number { return this.acDescuentoMenor; }
+    totalDescuento3ra(): number { return this.acDescuento3ra; }
 
     porcIngles(): number {
         return this.inscritosTotal === 0 ? 0 : (this.cntIngles / this.inscritosTotal) * 100;

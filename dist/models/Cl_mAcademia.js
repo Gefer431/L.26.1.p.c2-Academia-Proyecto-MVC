@@ -10,14 +10,19 @@ export default class Cl_mAcademia {
         this.inscritosTotal = 0;
         this.acEdades = 0;
         this.cntMayoresEdad = 0;
+        this.acDescuentoMenor = 0;
+        this.acDescuento3ra = 0;
     }
     procesarInscrito(ins) {
-        this.recaudadoTotal += ins.pagoFinal();
-        this.acEdades += ins.calcularEdad();
+        const pago = ins.inversion();
+        this.recaudadoTotal += pago;
         this.inscritosTotal++;
-        const edad = ins.calcularEdad();
+        const edad = ins.edad();
+        this.acEdades += edad;
         if (edad >= 18)
             this.cntMayoresEdad++;
+        this.acDescuentoMenor += ins.descuentoMenorEdad();
+        this.acDescuento3ra += ins.descuento3raEdad();
         switch (ins.tipoCurso) {
             case 1:
                 this.cntIngles++;
@@ -47,6 +52,8 @@ export default class Cl_mAcademia {
     cantTerceraEdad() { return this.cntTerceraEdad; }
     totalInscritos() { return this.inscritosTotal; }
     cantMayoresEdad() { return this.cntMayoresEdad; }
+    totalDescuentoMenor() { return this.acDescuentoMenor; }
+    totalDescuento3ra() { return this.acDescuento3ra; }
     porcIngles() {
         return this.inscritosTotal === 0 ? 0 : (this.cntIngles / this.inscritosTotal) * 100;
     }

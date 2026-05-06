@@ -16,12 +16,14 @@ export default class Cl_vAcademiaBootstrap {
         this.lblPorcTercera = document.getElementById("academia_porcTercera");
         this.lblCantMayores = document.getElementById("academia_cantMayores");
         this.lblPromEdad = document.getElementById("academia_lblPromEdad");
+        this.lblTotalDescuentoMenor = document.getElementById("academia_totalDescuentoMenor");
+        this.lblTotalDescuento3ra = document.getElementById("academia_totalDescuento3ra");
     }
     onNuevoInscrito(callback) {
         this.btnNuevo.onclick = callback;
     }
-    reportarEstadisticas(total, cantIng, cantComp, cantIA, porcIng, porcComp, porcIA, cantMenor, cantAdulto, cantTercera, porcMenor, porcAdulto, porcTercera, cantMayores, promedioEdad) {
-        this.lblTotal.textContent = `$${total.toFixed(2)}`;
+    reportarEstadisticas(total, cantIng, cantComp, cantIA, porcIng, porcComp, porcIA, cantMenor, cantAdulto, cantTercera, porcMenor, porcAdulto, porcTercera, cantMayores, promedioEdad, totalDescuentoMenor, totalDescuento3ra) {
+        this.lblTotal.textContent = `${total.toFixed(2)}`;
         this.lblCantIng.textContent = `${cantIng}`;
         this.lblCantComp.textContent = `${cantComp}`;
         this.lblCantIA.textContent = `${cantIA}`;
@@ -36,5 +38,7 @@ export default class Cl_vAcademiaBootstrap {
         this.lblPorcTercera.textContent = `${porcTercera.toFixed(1)}%`;
         this.lblCantMayores.textContent = `${cantMayores}`;
         this.lblPromEdad.textContent = promedioEdad.toFixed(2);
+        this.lblTotalDescuentoMenor.textContent = `${totalDescuentoMenor.toFixed(2)}`;
+        this.lblTotalDescuento3ra.textContent = `${totalDescuento3ra.toFixed(2)}`;
     }
 }

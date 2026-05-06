@@ -41,7 +41,13 @@ export default class Cl_cInscrito {
             this.vista.nombre, this.vista.apellido, this.vista.cedula, sexo, fecha, tipo
         );
         this.callback(inscrito);
-        this.vista.agregarAFila(inscrito.nombre, inscrito.apellido, inscrito.tipoCurso, inscrito.pagoFinal());
+        this.vista.agregarAFila(
+            inscrito.nombre, inscrito.apellido, inscrito.cedula, inscrito.sexo,
+            inscrito.fechaNac.toISOString().split('T')[0], inscrito.edad(),
+            inscrito.tipoCurso,
+            inscrito.inversionBase(), inscrito.descuentoMenorEdad(),
+            inscrito.descuento3raEdad(), inscrito.inversion()
+        );
         this.vista.ocultar();
     }
 

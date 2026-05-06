@@ -17,6 +17,8 @@ export default class Cl_vAcademiaPlain implements I_vAcademia {
     private lblPorcTercera: HTMLElement;
     private lblCantMayores: HTMLElement;
     private lblPromEdad: HTMLElement;
+    private lblTotalDescuentoMenor: HTMLElement;
+    private lblTotalDescuento3ra: HTMLElement;
 
     constructor() {
         this.btnNuevo = document.getElementById("academia_btnNuevoInscrito") as HTMLButtonElement;
@@ -35,6 +37,8 @@ export default class Cl_vAcademiaPlain implements I_vAcademia {
         this.lblPorcTercera = document.getElementById("academia_porcTercera") as HTMLElement;
         this.lblCantMayores = document.getElementById("academia_cantMayores") as HTMLElement;
         this.lblPromEdad = document.getElementById("academia_lblPromEdad") as HTMLElement;
+        this.lblTotalDescuentoMenor = document.getElementById("academia_totalDescuentoMenor") as HTMLElement;
+        this.lblTotalDescuento3ra = document.getElementById("academia_totalDescuento3ra") as HTMLElement;
     }
 
     onNuevoInscrito(callback: () => void): void {
@@ -48,9 +52,11 @@ export default class Cl_vAcademiaPlain implements I_vAcademia {
         cantMenor: number, cantAdulto: number, cantTercera: number,
         porcMenor: number, porcAdulto: number, porcTercera: number,
         cantMayores: number,
-        promedioEdad: number
+        promedioEdad: number,
+        totalDescuentoMenor: number,
+        totalDescuento3ra: number
     ): void {
-        this.lblTotal.textContent = `$${total.toFixed(2)}`;
+        this.lblTotal.textContent = `${total.toFixed(2)}`;
         this.lblCantIng.textContent = `${cantIng}`;
         this.lblCantComp.textContent = `${cantComp}`;
         this.lblCantIA.textContent = `${cantIA}`;
@@ -65,5 +71,7 @@ export default class Cl_vAcademiaPlain implements I_vAcademia {
         this.lblPorcTercera.textContent = `${porcTercera.toFixed(1)}%`;
         this.lblCantMayores.textContent = `${cantMayores}`;
         this.lblPromEdad.textContent = promedioEdad.toFixed(2);
+        this.lblTotalDescuentoMenor.textContent = `${totalDescuentoMenor.toFixed(2)}`;
+        this.lblTotalDescuento3ra.textContent = `${totalDescuento3ra.toFixed(2)}`;
     }
 }

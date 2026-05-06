@@ -13,5 +13,10 @@ export interface I_vInscrito {
     limpiarFormulario(): void;
     mostrarMensaje(texto: string): void;
 
-    agregarAFila(nombre: string, apellido: string, tipoCurso: number, pago: number): void;
+    agregarAFila(
+        nombre: string, apellido: string, cedula: string, sexo: string,
+        fechaNac: string, edad: number, tipoCurso: number,
+        inversionBase: number, descuentoMenorEdad: number,
+        descuento3raEdad: number, inversion: number
+    ): void;
 }

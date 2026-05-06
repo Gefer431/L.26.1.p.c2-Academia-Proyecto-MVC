@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Academia - HTML Plano</title>
     <style>
-        .container { max-width: 800px; margin: auto; padding: 1rem; }
+        .container { max-width: 1400px; margin: auto; padding: 1rem; }
         button { margin-right: 0.5rem; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        table { border-collapse: collapse; width: 100%; font-size: 13px; }
+        th, td { border: 1px solid #ccc; padding: 6px; text-align: left; }
         th { background-color: #f2f2f2; }
         .alert-info, .alert-secondary, .alert-success { padding: 0.75rem; margin: 1rem 0; }
         .alert-info { background-color: #e3f2fd; }
         .alert-secondary { background-color: #f8f9fa; }
         .alert-success { background-color: #d4edda; }
         .form-group { margin-bottom: 0.75rem; }
-        .form-group label { display: inline-block; width: 160px; }
+        .form-group label { display: inline-block; width: 200px; }
         .error { color: red; }
     </style>
 </head>
@@ -41,17 +41,24 @@
         </div>
         <div class="alert-success">
             <strong>Por rangos de edad:</strong><br>
-            Menores de edad (&lt;18): <span id="academia_cantMenor">0</span> (<span id="academia_porcMenor">0%</span>)<br>
-            Adultos (18-50/60): <span id="academia_cantAdulto">0</span> (<span id="academia_porcAdulto">0%</span>)<br>
+            Menores de edad : <span id="academia_cantMenor">0</span> (<span id="academia_porcMenor">0%</span>)<br>
+            Adultos : <span id="academia_cantAdulto">0</span> (<span id="academia_porcAdulto">0%</span>)<br>
             Tercera edad: <span id="academia_cantTercera">0</span> (<span id="academia_porcTercera">0%</span>)<br>
-            <strong>Mayores de edad (>=18):</strong> <span id="academia_cantMayores">0</span> <br>
-            <strong>Promedio de edad:</strong> <span id="academia_lblPromEdad">0.0</span> años
+            <strong>Mayores de edad:</strong> <span id="academia_cantMayores">0</span><br>
+            <strong>Promedio de edad:</strong> <span id="academia_lblPromEdad">0.0</span> años<br>
+            <strong>Total descuento:</strong> $<span id="academia_totalDescuentoMenor">0.00</span><br>
+            <strong>Total descuento:</strong> $<span id="academia_totalDescuento3ra">0.00</span>
         </div>
 
         <h4>Listado de inscritos</h4>
-        <table border="1" width="100%">
+        <table border="1">
             <thead>
-                <tr><th>Nombre</th><th>Apellido</th><th>Curso</th><th>Pago</th></tr>
+                <tr>
+                    <th>Nombre</th><th>Apellido</th><th>Cédula</th><th>Sexo</th>
+                    <th>fechaNac</th><th>edad()</th><th>tipoCurso</th>
+                    <th>inversionBase()</th><th>descuentoMenorEdad()</th>
+                    <th>descuento3raEdad()</th><th>inversion()</th>
+                </tr>
             </thead>
             <tbody id="tabla-inscritos-body"></tbody>
         </table>
@@ -63,7 +70,7 @@
             <div class="form-group"><label>Cédula:</label><input type="text" id="inscrito_cedula"></div>
             <div class="form-group"><label>Sexo (M/F):</label><input type="text" id="inscrito_sexo" maxlength="1"></div>
             <div class="form-group"><label>Fecha Nac (aaaa-mm-dd):</label><input type="date" id="inscrito_fechaNac"></div>
-            <div class="form-group"><label>Tipo Curso (1,2,3):</label><input type="number" id="inscrito_tipoCurso" min="1" max="3"></div>
+            <div class="form-group"><label>Tipo Curso (1:Inglés,2:Computación,3:I.A.):</label><input type="number" id="inscrito_tipoCurso" min="1" max="3"></div>
             <div id="mensaje" class="error"></div>
             <div style="margin-top: 1rem;">
                 <button id="inscrito_btnCancelar">Cancelar</button>
